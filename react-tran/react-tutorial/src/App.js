@@ -1,11 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 import { List } from './List';
 
 function App() {
+  const [description, setDesctiption] = useState('クリック前の表示');
+
+  const changeDscription = () => {
+    setDesctiption("クリック後の表示です");
+  }
   return (
-    <div>ゼロから始めるReact入門
-      <List />
+    <div>
+      {description}
+      <List title="取扱言語一覧 " />
+      <button onClick={() => changeDscription}>ボタン</button>
     </div>
   );
 }
