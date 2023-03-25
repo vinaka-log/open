@@ -1,23 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
 
-const Form = () => {
-
+export const Form = ({ onAddLang }) => {
     const [text, setText] = useState('');
 
-    const submitForm = (event) => {
-        // ファームをサブミットするとページ遷移してしまうがそれを止めるため。
-        event.preventDefault();
-        console.log(text);
+    const submitForm = (e) => {
+        e.preventDefault();
+        onAddLang(text);
     }
+
     return (
         <div>
             <h4>新しい言語の追加</h4>
             <form onSubmit={submitForm}>
                 <div>
-                    <input
-                        type="text"
-                        value={text}
-                        onChange={(e) => setText(e.target.value)} />
+                    <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
                 </div>
                 <div>
                     <button>追加</button>
@@ -26,5 +22,3 @@ const Form = () => {
         </div>
     )
 }
-
-export default Form
